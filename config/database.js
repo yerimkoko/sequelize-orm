@@ -1,22 +1,18 @@
 const mysql = require('mysql2/promise');
-const { logger } = require('./winston');
+const dotenv = require('dotenv');
+const path = require('path');
 
-// TODO: 본인의 DB 계정 입력
-const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  port: '3306',
-  password: '0217',
-  database: 'baemin_db',
+dotenv.config({
+  path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`),
 });
 
-// const pool = mysql.createPool({
-//   host: 'gomdol.czlvihmuuxgk.ap-northeast-2.rds.amazonaws.com',
-//   user: 'admin',
-//   port: '3306',
-//   password: 'rhaehf!123',
-//   database: 'baemin_db',
-// });
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  port: process.env.DB_PORT,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+});
 
 module.exports = {
   pool: pool,
