@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const { Test } = require('./models');
-
 module.exports = function () {
   const app = express();
 
@@ -15,8 +13,8 @@ module.exports = function () {
     res.status(200).send('pong');
   });
 
-  require('../src/app/User/userRoute')(app);
   require('../src/app/test/testRoute')(app);
+  require('../src/app/Member/memberRoute')(app);
 
   return app;
 };

@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
       password: { type: DataTypes.STRING(200), allowNull: false },
       profileUrl: { type: DataTypes.STRING(300) },
       phoneNumber: { type: DataTypes.STRING(50) },
-      isDeleted: { type: DataTypes.BOOLEAN, defaultValues: false },
+      isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
     },
     { underscored: true, timestamps: true, freezeTableName: true }
   );
