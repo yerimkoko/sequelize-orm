@@ -1,5 +1,7 @@
-module.exports = function (app) {
-  const test = require('./testController');
+const testController = require('./testController');
 
-  app.post('/test', test.saveTest);
+module.exports = function (app) {
+  app.post('/api/v1/test', testController.saveTest);
+
+  app.get('/api/v1/test', testController.retrieveAllTest);
 };

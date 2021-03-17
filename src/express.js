@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const { Test } = require('../src/models');
+const { Test } = require('./models');
 
 module.exports = function () {
   const app = express();

@@ -1,15 +1,26 @@
-const { logger } = require('../../../config/winston');
-const baseResponse = require('../../../config/baseResponseStatus');
-const { response } = require('../../../config/response');
-const { errResponse } = require('../../../config/response');
-
 const { Test } = require('../../models');
+const { sequelize } = require('../../models');
+const { ConflictException } = require('../../common/baseException');
 
-exports.saveTest = async function (name) {
-  try {
-    await Test.create({ name: name });
-  } catch (err) {
-    logger.error(`App - createUser Service error\n: ${err.message}`);
-    return errResponse(baseResponse.DB_ERROR);
+exports.saveTest = async function (name, price, profileUrl) {
+  const findTest = await Test.findOne({
+    where: {
+      name: name,
+    },
+  });
+  if (findTest) {
+    throw new ConflictExceptio('이미 존재하는 테스트 입니다');
   }
+
+  await Test.create({
+    name: name,
+    price: price,
+    profileUrl: profileUrl,
+  });
+};
+
+exports.retrieveAllTest = async function () {
+  //   return await Test.findAll();
+  const result = await sequelize.query('SELECT * FROM test');
+  return result[0];
 };
