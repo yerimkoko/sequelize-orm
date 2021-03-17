@@ -14,7 +14,7 @@ module.exports = function () {
   });
 
   require('../src/app/test/testRoute')(app);
-  require('../src/app/Member/memberRoute')(app);
+  require('../src/app/member/memberRoute')(app);
 
   return app;
 };
