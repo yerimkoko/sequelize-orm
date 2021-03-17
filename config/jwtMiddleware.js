@@ -28,7 +28,7 @@ const jwtMiddleware = (req, res, next) => {
   p.then((verifiedToken) => {
     //비밀 번호 바뀌었을 때 검증 부분 추가 할 곳
     req.verifiedToken = verifiedToken;
-    req.userId = req.body.userId;
+    req.userId = verifiedToken.userId;
     next();
   }).catch(onError);
 };

@@ -48,7 +48,7 @@ async function insertUserInfo(connection, insertUserInfoParams) {
 async function selectUserPassword(connection, selectUserPasswordParams) {
   const selectUserPasswordQuery = `
         SELECT email, nickname, password
-        FROM UserInfo 
+        FROM user
         WHERE email = ? AND password = ?;`;
   const selectUserPasswordRow = await connection.query(
     selectUserPasswordQuery,
@@ -62,7 +62,7 @@ async function selectUserPassword(connection, selectUserPasswordParams) {
 async function selectUserAccount(connection, email) {
   const selectUserAccountQuery = `
         SELECT status, id
-        FROM UserInfo 
+        FROM user
         WHERE email = ?;`;
   const selectUserAccountRow = await connection.query(
     selectUserAccountQuery,
@@ -73,7 +73,7 @@ async function selectUserAccount(connection, email) {
 
 async function updateUserInfo(connection, id, nickname) {
   const updateUserQuery = `
-  UPDATE UserInfo 
+  UPDATE user
   SET nickname = ?
   WHERE id = ?;`;
   const updateUserRow = await connection.query(updateUserQuery, [nickname, id]);
