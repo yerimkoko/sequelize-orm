@@ -3,6 +3,7 @@ const { ConflictException } = require('../../common/baseException');
 const { Member } = require('../../models');
 const secret_config = require('../../config/secret');
 const PasswordUtils = require('../../utils/passwordUtils');
+const { profile } = require('winston');
 
 exports.signUp = async function (
   email,
@@ -59,4 +60,35 @@ exports.login = async function (email, password) {
   );
 
   return token;
+};
+
+exports.updateMember = async function (
+  nickname,
+  password,
+  phoneNumber,
+  profileUrl,
+  id
+) {
+  await Member(
+    {
+      nickname: nickname,
+      password: password,
+      phoneNumber: phoneNumber,
+      profileUrl: profileUrl,
+    },
+    {
+      where: { id: id },
+    }
+  );
+};
+
+exports.verifyEmail = async function (email) {
+  const findMember = await Member.findOne({
+    where: {
+      email: email,
+    },
+  });
+  if (findMember) {
+    throw new ConflictException(`이미 존재하는 이메일 입니다.`);
+  }
 };
