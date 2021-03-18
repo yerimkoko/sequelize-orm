@@ -1,6 +1,5 @@
 const { Test } = require('../../models');
 const { sequelize } = require('../../models');
-const { ConflictException } = require('../../common/baseException');
 
 exports.saveTest = async function (name, price, profileUrl) {
   const findTest = await Test.findOne({
