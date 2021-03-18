@@ -4,7 +4,13 @@ const { Member } = require('../../models');
 const secret_config = require('../../config/secret');
 const PasswordUtils = require('../../utils/passwordUtils');
 
-exports.signUp = async function (email, password, nickname, phoneNumber) {
+exports.signUp = async function (
+  email,
+  password,
+  nickname,
+  phoneNumber,
+  birth
+) {
   const findMember = await Member.findOne({
     where: {
       email: email,
@@ -22,6 +28,7 @@ exports.signUp = async function (email, password, nickname, phoneNumber) {
     password: hashedPassword,
     nickname: nickname,
     phoneNumber: phoneNumber,
+    birth: birth,
   });
 };
 

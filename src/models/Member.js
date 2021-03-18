@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       email: { type: DataTypes.STRING(50), allowNull: false },
       password: { type: DataTypes.STRING(200), allowNull: false },
       profileUrl: { type: DataTypes.STRING(300) },
-      phoneNumber: { type: DataTypes.STRING(50) },
+      phoneNumber: { type: DataTypes.STRING(50), allowNull: false },
+      birth: { type: DataTypes.STRING(50) },
       isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
