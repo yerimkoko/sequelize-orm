@@ -10,31 +10,31 @@ class BaseException extends Error {
 
 class BadRequsetException extends BaseException {
   constructor(message) {
-    super(400, 'BAD_REQUEST_EXCEPTION', message);
+    super(400, 2000, message);
   }
 }
 
 class UnAuthorizedException extends BaseException {
   constructor(message) {
-    super(401, 'UNAUTHORIZED_EXCEPTION', message);
+    super(401, 2001, message);
   }
 }
 
 class NotFoundException extends BaseException {
   constructor(message) {
-    super(404, 'NOT_FOUND_EXCEPTION', message);
+    super(404, 2002, message);
   }
 }
 
 class ConflictException extends BaseException {
   constructor(message) {
-    super(409, 'CONFLICT_EXCEPTION', message);
+    super(409, 2004, message);
   }
 }
 
 class InternalServerException extends BaseException {
   constructor(message) {
-    super(500, 'INTERNAL_SERVER_EXCEPTION', message);
+    super(500, 4000, message);
   }
 }
 

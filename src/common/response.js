@@ -10,7 +10,7 @@ const response = ({ isSuccess, code, message }, result) => {
 const success = (result) => {
   return {
     isSuccess: true,
-    code: null,
+    code: 1000,
     message: null,
     result: result,
   };

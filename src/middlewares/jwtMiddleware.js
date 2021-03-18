@@ -4,7 +4,7 @@ const { fail } = require('../common/response');
 const { UnAuthorizedException } = require('../common/baseException');
 
 const jwtMiddleware = (req, res, next) => {
-  const token = req.headers['x-access-token'] || req.query.token;
+  const token = req.headers['x-access-token'];
   if (!token) {
     return res
       .status(401)
