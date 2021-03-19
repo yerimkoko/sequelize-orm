@@ -29,7 +29,7 @@ module.exports = function (app) {
   );
 
   app.post(
-    '/api/v1/signup/verfiy/email',
+    '/api/v1/signup/verify/email',
     validateRequest('body', ['email']),
     memberController.verfiyEmail
   );
