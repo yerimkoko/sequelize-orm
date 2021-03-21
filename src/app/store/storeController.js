@@ -10,3 +10,9 @@ exports.getStores = async function (req, res) {
     res.status(error.status).send(fail(error));
   }
 };
+
+exports.getStoreMenuList = async function (req, res) {
+  try {
+    const { storeId } = req.query;
+  } catch (error) {}
+};

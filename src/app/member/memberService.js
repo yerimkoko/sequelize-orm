@@ -74,6 +74,7 @@ exports.updateMember = async function (nickname, phoneNumber, profileUrl, id) {
   if (!findMember) {
     throw new NotFoundException('해당하는 멤버는 존재하지 않습니다.');
   }
+
   await findMember.update({
     nickname: nickname,
     phoneNumber: phoneNumber,

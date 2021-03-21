@@ -20,4 +20,5 @@ sequelize.sync({ alter: true });
 db.Test = require('./Test')(sequelize, Sequelize);
 db.Member = require('./Member')(sequelize, Sequelize);
 db.Store = require('./Store')(sequelize, Sequelize);
+db.StoreMenuList = require('./StoreMenuList')(sequelize, Sequelize);
 module.exports = db;
