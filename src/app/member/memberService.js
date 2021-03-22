@@ -64,7 +64,13 @@ exports.login = async function (email, password) {
   return token;
 };
 
-exports.updateMember = async function (nickname, phoneNumber, profileUrl, id) {
+exports.updateMember = async function (
+  nickname,
+  phoneNumber,
+  profileUrl,
+  password,
+  id
+) {
   const findMember = await Member.findOne({
     where: {
       id: id,
@@ -79,6 +85,7 @@ exports.updateMember = async function (nickname, phoneNumber, profileUrl, id) {
     nickname: nickname,
     phoneNumber: phoneNumber,
     profileUrl: profileUrl,
+    password: password,
   });
 };
 

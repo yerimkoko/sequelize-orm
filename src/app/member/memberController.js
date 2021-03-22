@@ -34,9 +34,15 @@ exports.login = async function (req, res) {
 
 exports.updateMemberInfo = async function (req, res) {
   try {
-    const { nickname, phoneNumber, profileUrl } = req.body;
+    const { nickname, phoneNumber, profileUrl, password } = req.body;
     const id = req.userId;
-    await memberService.updateMember(nickname, phoneNumber, profileUrl, id);
+    await memberService.updateMember(
+      nickname,
+      phoneNumber,
+      profileUrl,
+      password,
+      id
+    );
     return res.status(200).send(success('OK'));
   } catch (error) {
     console.error(error);
