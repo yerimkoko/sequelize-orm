@@ -28,5 +28,6 @@ exports.getStores = async function (storeId) {
       },
     ],
   });
+
   return getStoreMenuList;
 };

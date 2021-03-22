@@ -6,7 +6,7 @@ const {
 const { Member } = require('../../models');
 const secret_config = require('../../config/secret');
 const PasswordUtils = require('../../utils/passwordUtils');
-
+const { memberInfoResponse } = require('./dto/memberInfoResponse');
 exports.signUp = async function (
   email,
   password,
@@ -91,4 +91,15 @@ exports.verifyEmail = async function (email) {
   if (findMember) {
     throw new ConflictException('이미 존재하는 이메일 입니다.');
   }
+};
+
+exports.getMemberInfo = async function (id) {
+  const memberResponse = await Member.findAll({
+    where: {
+      id: id,
+    },
+  });
+  return memberResponse.map((member) => {
+    return memberInfoResponse(member);
+  });
 };

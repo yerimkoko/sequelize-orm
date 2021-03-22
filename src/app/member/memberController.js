@@ -1,3 +1,4 @@
+const { reset } = require('nodemon');
 const { error } = require('winston');
 const { success, fail } = require('../../common/response');
 const memberService = require('./memberService');
@@ -48,6 +49,17 @@ exports.verfiyEmail = async function (req, res) {
     const { email } = req.body;
     await memberService.verifyEmail(email);
     return res.status(200).send(success('OK'));
+  } catch (error) {
+    console.error(error);
+    res.status(error.status).send(fail(error));
+  }
+};
+
+exports.getMemberInfo = async function (req, res) {
+  try {
+    const id = req.userId;
+    const memberInfo = await memberService.getMemberInfo(id);
+    return res.status(200).send(success(memberInfo));
   } catch (error) {
     console.error(error);
     res.status(error.status).send(fail(error));

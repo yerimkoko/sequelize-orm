@@ -33,4 +33,6 @@ module.exports = function (app) {
     validateRequest('body', ['email']),
     memberController.verfiyEmail
   );
+
+  app.get('/api/v1/member', jwtMiddleware, memberController.getMemberInfo);
 };
