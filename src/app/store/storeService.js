@@ -5,8 +5,30 @@ const StoreMenuList = require('../../models/StoreMenuList');
 const { storeInfoResponse } = require('./dto/storeInfoResponse');
 const { getStores } = require('./storeController');
 
-exports.getStores = async function (category) {
+exports.retrieveDefaultStores = async function (category) {
   const findStores = await Store.findAll({ where: { category: category } });
+
+  return findStores.map((store) => {
+    return storeInfoResponse(store);
+  });
+};
+
+exports.retrieveDefaultStoresOrderByDeliveryTip = async function (category) {
+  const findStores = await Store.findAll({
+    where: { category: category },
+    order: [['minTip', 'ASC']],
+  });
+
+  return findStores.map((store) => {
+    return storeInfoResponse(store);
+  });
+};
+
+exports.retrieveDefaultStoresOrderByDeliveryTime = async function (category) {
+  const findStores = await Store.findAll({
+    where: { category: category },
+    order: [['minDelivery', 'ASC']],
+  });
 
   return findStores.map((store) => {
     return storeInfoResponse(store);
