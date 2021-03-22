@@ -1,3 +1,4 @@
+const { QueryTypes } = require('sequelize');
 const { ConflictException } = require('../../common/baseException');
 const { Store } = require('../../models');
 const StoreMenuList = require('../../models/StoreMenuList');

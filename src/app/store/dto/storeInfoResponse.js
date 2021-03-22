@@ -9,6 +9,7 @@ const storeInfoResponse = (store) => {
     minTip: store.minTip,
     maxTip: store.minTip,
     category: store.category,
+    minimumOrder: store.minimumOrder,
   };
 };
 

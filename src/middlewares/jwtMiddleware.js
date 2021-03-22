@@ -7,7 +7,7 @@ const jwtMiddleware = (req, res, next) => {
   const token = req.headers['x-access-token'];
   if (!token) {
     return res
-      .status(401)
+      .status(200)
       .send(
         fail(
           new UnAuthorizedException(
@@ -30,7 +30,7 @@ const jwtMiddleware = (req, res, next) => {
     next();
   }).catch((error) => {
     return res
-      .status(401)
+      .status(200)
       .send(
         fail(
           new UnAuthorizedException(

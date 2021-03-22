@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       minTip: { type: DataTypes.INTEGER(10) },
       maxTip: { type: DataTypes.INTEGER(10) },
       comment: { type: DataTypes.STRING(300) },
+      minimumOrder: { type: DataTypes.INTEGER(10) },
       isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
