@@ -17,7 +17,6 @@ db.Sequelize = Sequelize;
 sequelize.sync({ alter: true });
 
 // 이곳에서 테이블을 매핑해줍니다
-db.Test = require('./Test')(sequelize, Sequelize);
 db.Member = require('./Member')(sequelize, Sequelize);
 db.Store = require('./Store')(sequelize, Sequelize);
 db.StoreMenuList = require('./StoreMenuList')(sequelize, Sequelize);
