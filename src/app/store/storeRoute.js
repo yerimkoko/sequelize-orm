@@ -1,13 +1,16 @@
 const storeController = require('./storeController');
+const validateRequest = require('../../middlewares/requestValidator');
 
 module.exports = function (app) {
-  app.get('/api/v1/store', storeController.getStores);
-};
+  app.get(
+    '/api/v1/store',
+    validateRequest('query', ['category']),
+    storeController.getStores
+  );
 
-module.exports = function (app) {
-  app.get('/api/v1/store/list', storeController.getStoreMenuList);
-};
-
-module.exports = function (app) {
-  app.get('/api/v1/store/menu-list', storeController.getStoreMenuDetail);
+  app.get(
+    '/api/v1/store/menu-list',
+    validateRequest('query', ['storeId']),
+    storeController.getStoreMenuDetail
+  );
 };

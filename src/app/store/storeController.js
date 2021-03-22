@@ -7,6 +7,7 @@ exports.getStores = async function (req, res) {
     const response = await storeService.getStores(category);
     return res.status(200).send(success(response));
   } catch (error) {
+    console.error(error);
     res.status(error.status).send(fail(error));
   }
 };
@@ -17,6 +18,7 @@ exports.getStoreMenuDetail = async function (req, res) {
     const response = await storeService.getStoresDetail(storeId);
     return res.status(200).send(success(response));
   } catch (error) {
+    console.error(error);
     res.status(error.status).send(fail(error));
   }
 };
