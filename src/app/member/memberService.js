@@ -7,6 +7,7 @@ const { Member } = require('../../models');
 const secret_config = require('../../config/secret');
 const PasswordUtils = require('../../utils/passwordUtils');
 const { memberInfoResponse } = require('./dto/memberInfoResponse');
+
 exports.signUp = async function (
   email,
   password,

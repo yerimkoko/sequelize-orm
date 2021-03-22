@@ -11,8 +11,12 @@ exports.getStores = async function (req, res) {
   }
 };
 
-exports.getStoreMenuList = async function (req, res) {
+exports.getStoreMenuDetail = async function (req, res) {
   try {
     const { storeId } = req.query;
-  } catch (error) {}
+    const response = await storeService.getStoresDetail(storeId);
+    return res.status(200).send(success(response));
+  } catch (error) {
+    res.status(error.status).send(fail(error));
+  }
 };
