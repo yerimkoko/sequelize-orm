@@ -4,20 +4,14 @@ const validateRequest = require('../../middlewares/requestValidator');
 module.exports = function (app) {
   app.get(
     '/api/v1/store',
-    validateRequest('query', ['category']),
+    validateRequest('query', ['category', 'orderBy']),
     storeController.retrieveDefaultStores
   );
 
   app.get(
-    '/api/v1/store/tip',
-    validateRequest('query', ['category']),
-    storeController.retrieveDefaultStoresOrderByDeliveryTip
-  );
-
-  app.get(
-    '/api/v1/store/time',
-    validateRequest('query', ['category']),
-    storeController.retrieveDefaultStoresOrderByDeliveryTime
+    '/api/v1/store/search',
+    validateRequest('query', ['keyword']),
+    storeController.searchStore
   );
 
   app.get(

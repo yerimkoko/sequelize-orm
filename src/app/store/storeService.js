@@ -1,12 +1,13 @@
-const { QueryTypes } = require('sequelize');
-const { ConflictException } = require('../../common/baseException');
+const { Op } = require('sequelize');
 const { Store, sequelize } = require('../../models');
-const StoreMenuList = require('../../models/StoreMenuList');
 const { storeInfoResponse } = require('./dto/storeInfoResponse');
-const { getStores } = require('./storeController');
+const { ValidationException } = require('../../common/baseException');
 
-exports.retrieveDefaultStores = async function (category) {
-  const findStores = await Store.findAll({ where: { category: category } });
+exports.retrieveDefaultStores = async function (category, orderBy) {
+  const findStores = await Store.findAll({
+    where: { category: category },
+    order: [['id', 'DESC']],
+  });
 
   return findStores.map((store) => {
     return storeInfoResponse(store);
@@ -28,6 +29,17 @@ exports.retrieveDefaultStoresOrderByDeliveryTime = async function (category) {
   const findStores = await Store.findAll({
     where: { category: category },
     order: [['minDelivery', 'ASC']],
+  });
+
+  return findStores.map((store) => {
+    return storeInfoResponse(store);
+  });
+};
+
+exports.searchStore = async function (keyword) {
+  const findStores = await Store.findAll({
+    where: { name: { [Op.like]: '%' + keyword + '%' } },
+    order: [['id', 'DESC']],
   });
 
   return findStores.map((store) => {

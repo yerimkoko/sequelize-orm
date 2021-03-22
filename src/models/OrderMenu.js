@@ -3,10 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     'order_menu',
     {
       id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
-      storeId: { type: DataTypes.BIGINT },
+      listId: { type: DataTypes.BIGINT },
       menuId: { type: DataTypes.BIGINT },
-      cnt: { type: DataTypes.INTEGER(100) },
-      price: { type: DataTypes.INTEGER(100) },
+      cnt: { type: DataTypes.INTEGER(100), defaultValue: 1 },
+      amount: { type: DataTypes.INTEGER(100) },
       isDeleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
