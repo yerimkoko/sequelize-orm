@@ -15,6 +15,7 @@ module.exports = function () {
 
   require('../src/app/member/memberRoute')(app);
   require('../src/app/store/storeRoute')(app);
+  require('../src/app/order/orderRoute')(app);
 
   return app;
 };
