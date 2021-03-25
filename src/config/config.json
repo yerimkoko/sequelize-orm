@@ -5,12 +5,5 @@
     "database": "baemin_db",
     "host": "localhost",
     "dialect": "mysql"
-  },
-  "dev": {
-    "username": "admin",
-    "password": "rhaehf!123",
-    "database": "baemin_db",
-    "host": "gomdol.czlvihmuuxgk.ap-northeast-2.rds.amazonaws.com",
-    "dialect": "mysql"
   }
 }
